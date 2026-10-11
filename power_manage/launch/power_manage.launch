@@ -1,0 +1,12 @@
+<launch> 
+  <arg name="yamlpath" default="/home/iimt/.cfg/controlmaster/controlmaster/param/yaml/" />              
+  <node pkg="power_manage" type="power_manage_node" name="power_manage_node" respawn="false" output="screen" launch-prefix="gdb -ex run --args">
+      <param name="yamlpath" value="$(arg yamlpath)task.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)power_manage_charge.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)common_charge.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)task.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)system.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)nav.yaml"/>
+      <rosparam command="load" file="$(arg yamlpath)io.yaml"/>
+  </node>
+</launch>
